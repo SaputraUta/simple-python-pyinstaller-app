@@ -1,8 +1,4 @@
 node {
-    stage('Checkout') {
-        checkout scm
-    }
-    
     stage('Build') {
         docker.image('python:2-alpine').inside {
             sh 'ls -R'
