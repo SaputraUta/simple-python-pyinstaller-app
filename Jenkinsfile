@@ -24,11 +24,11 @@ node {
             sh '''
                 echo "Starting Python application..."
                 python sources/add2vals.py 10 20 &
+                echo "Application is running for 60 seconds..."
                 sleep 60
                 APP_PID=$!
-                echo "Application is running for 60 seconds..."
-                wait $APP_PID
                 echo "Stopping Python application..."
+                wait $APP_PID
             '''
         }
     }
