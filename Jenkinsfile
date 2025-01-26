@@ -23,7 +23,7 @@ node {
         // Menambahkan credential SSH untuk EC2
         withCredentials([sshUserPrivateKey(credentialsId: '7fa5ee1f-3a15-4854-978b-b85d2d952d26', keyFileVariable: 'EC2_KEY_PATH', usernameVariable: 'EC2_USER')]) {
             // Menggunakan Docker untuk deploy aplikasi ke EC2 instance
-            docker.image('python:2-alpine').inside {
+            docker.image('python:2-alpine').inside('--user root') {
                 sh '''
                     # Install openssh-client untuk menggunakan scp dan ssh
                     apk add --no-cache openssh
