@@ -25,9 +25,12 @@ node {
             // Menggunakan Docker untuk deploy aplikasi ke EC2 instance
             docker.image('python:2-alpine').inside {
                 sh '''
+                    # Install openssh-client untuk menggunakan scp dan ssh
+                    apk add --no-cache openssh
+
                     # Tentukan variabel EC2 dan deploy path
-                    EC2_HOST="your-ec2-public-ip"
-                    DEPLOY_DIR="/path/on/your/ec2/instance"
+                    EC2_HOST="18.141.209.202"
+                    DEPLOY_DIR="/home/ec2-user/deploy"
                     
                     # Transfer file ke EC2
                     scp -i ${EC2_KEY_PATH} -o StrictHostKeyChecking=no sources/add2vals.py ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIR}
