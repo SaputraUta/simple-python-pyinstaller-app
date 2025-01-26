@@ -23,7 +23,7 @@ node {
         docker.image('python:2-alpine').inside {
             sh '''
                 echo "Starting Python application..."
-                python sources/add2vals.py &
+                python sources/add2vals.py 10 20 &
                 APP_PID=$!
                 sleep 60
                 echo "Stopping Python application..."
