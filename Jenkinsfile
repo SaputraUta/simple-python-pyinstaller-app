@@ -14,21 +14,4 @@ node {
             }
         }
     }
-
-    stage('Manual Approval') {
-        input message: 'Lanjutkan ke tahap Deploy?'
-    }
-
-    stage('Deploy') {
-        docker.image('python:2-alpine').inside {
-            sh '''
-                echo "Starting Python application..."
-                python sources/add2vals.py &
-                APP_PID=$!
-                sleep 60
-                echo "Stopping Python application..."
-                kill $APP_PID
-            '''
-        }
-    }
 }
