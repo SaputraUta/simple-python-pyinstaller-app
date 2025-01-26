@@ -31,6 +31,9 @@ node {
                     scp -i ${EC2_KEY_PATH} -o StrictHostKeyChecking=no sources/add2vals.py sources/calc.py ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIR}
 
                     ssh -i ${EC2_KEY_PATH} -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} "cd ${DEPLOY_DIR} && python3 add2vals.py 10 20"
+
+                    echo "Application is running for 60 seconds..."
+                    sleep 60
                 '''
             }
         }
