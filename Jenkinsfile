@@ -28,7 +28,7 @@ node {
                     EC2_HOST="18.141.209.202"
                     DEPLOY_DIR="/home/ec2-user/deploy"
                     
-                    scp -i ${EC2_KEY_PATH} -o StrictHostKeyChecking=no sources/add2vals.py ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIR}
+                    scp -i ${EC2_KEY_PATH} -o StrictHostKeyChecking=no sources/add2vals.py sources/calc.py ${EC2_USER}@${EC2_HOST}:${DEPLOY_DIR}
 
                     ssh -i ${EC2_KEY_PATH} -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} "cd ${DEPLOY_DIR} && python3 add2vals.py 10 20"
                 '''
